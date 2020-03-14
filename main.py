@@ -8,11 +8,6 @@ import sys
 import random
 import excel_text_io
 
-CLUBS = 1
-HEARTS = 2
-SPADES = 3
-DIAMONDS = 4
-
 ###
 ## Number of students per table dictionary and algorithm
 ###
@@ -23,6 +18,7 @@ seats = {9: (0, 0, 3, 3, 0, 3, 0), 10: (0, 0, 4, 3, 0, 3, 0), 11: (0, 0, 4, 4, 0
          21: (3, 3, 3, 3, 3, 3, 3), 22: (3, 3, 4, 3, 3, 3, 3), 23: (3, 4, 4, 3, 3, 3, 3),
          24: (4, 4, 4, 3, 3, 3, 3), 25: (4, 4, 4, 4, 3, 3, 3), 26: (4, 3, 4, 4, 3, 4, 4),
          27: (4, 4, 4, 3, 4, 4, 4), 28: (4, 4, 4, 4, 4, 4, 4)}
+
 
 def seat_options(num_students):
     tables = seats[num_students]
