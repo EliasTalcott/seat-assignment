@@ -2,8 +2,6 @@
 
 import openpyxl
 
-MAX_STUDENTS = 28
-
 ###
 ## Read class list from Excel file
 ###
