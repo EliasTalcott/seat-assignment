@@ -6,7 +6,7 @@
 
 import sys
 import random
-import excel_io
+import io
 
 CLUBS = 1
 HEARTS = 2
@@ -24,7 +24,8 @@ seats = {9: (0, 0, 3, 3, 0, 3, 0), 10: (0, 0, 4, 3, 0, 3, 0), 11: (0, 0, 4, 4, 0
          24: (4, 4, 4, 3, 3, 3, 3), 25: (4, 4, 4, 4, 3, 3, 3), 26: (4, 3, 4, 4, 3, 4, 4),
          27: (4, 4, 4, 3, 4, 4, 4), 28: (4, 4, 4, 4, 4, 4, 4)}
 
-def seat_options(tables):
+def seat_options(num_students):
+    tables = seats[num_students]
     cards = []
     for i, table in enumerate(tables):
         if table == 3:
@@ -52,18 +53,14 @@ def assign_seats(students, cards):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) == 2:
+    if len(sys.argv) == 3:
         # Read class list from Excel
-        class_list = excel_io.read_class_lists(sys.argv[1])
-
+        class_list = io.read_class_lists(sys.argv[1])
         # Get deck of cards for seating chart
-        deck = seat_options(seats[len(class_list)])
-
+        deck = seat_options(len(class_list))
         # Assign a random card to each student
         seat_assignments = assign_seats(class_list, deck)
-
-        # Print assignments
-        for key in seat_assignments:
-            print(key + ": " + seat_assignments[key])
+        # Write assignments
+        io.write_assignments(seat_assignments, sys.argv[2])
     else:
         sys.exit("Wrong arguments!")

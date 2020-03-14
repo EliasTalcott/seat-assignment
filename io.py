@@ -14,3 +14,9 @@ def read_class_lists(infile):
     for i in range(sheet.max_row - 1):
         lis.append(sheet.cell(row = i + 2, column = 1).value)
     return lis
+
+# Write seat assignments to text file
+def write_assignments(assignments, outfile):
+    with open(outfile) as fpout:
+        for key in assignments:
+            fpout.write(key + ": " + assignments[key])
