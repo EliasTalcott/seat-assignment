@@ -6,7 +6,7 @@
 
 import sys
 import random
-import io
+import excel_text_io
 
 CLUBS = 1
 HEARTS = 2
@@ -55,12 +55,12 @@ def assign_seats(students, cards):
 if __name__ == "__main__":
     if len(sys.argv) == 3:
         # Read class list from Excel
-        class_list = io.read_class_lists(sys.argv[1])
+        class_list = excel_text_io.read_class_lists(sys.argv[1])
         # Get deck of cards for seating chart
         deck = seat_options(len(class_list))
         # Assign a random card to each student
         seat_assignments = assign_seats(class_list, deck)
         # Write assignments
-        io.write_assignments(seat_assignments, sys.argv[2])
+        excel_text_io.write_assignments(seat_assignments, sys.argv[2])
     else:
         sys.exit("Wrong arguments!")

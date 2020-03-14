@@ -17,6 +17,6 @@ def read_class_lists(infile):
 
 # Write seat assignments to text file
 def write_assignments(assignments, outfile):
-    with open(outfile) as fpout:
+    with open(outfile, "w") as fpout:
         for key in assignments:
-            fpout.write(key + ": " + assignments[key])
+            fpout.write(key + ": " + assignments[key] + "\n")
