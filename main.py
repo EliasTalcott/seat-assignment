@@ -20,7 +20,7 @@ seats = {9: (0, 0, 3, 3, 0, 3, 0), 10: (0, 0, 4, 3, 0, 3, 0), 11: (0, 0, 4, 4, 0
          27: (4, 4, 4, 3, 4, 4, 4), 28: (4, 4, 4, 4, 4, 4, 4)}
 
 
-def seat_options(num_students):
+def generate_deck(num_students):
     tables = seats[num_students]
     cards = []
     for i, table in enumerate(tables):
@@ -53,7 +53,7 @@ if __name__ == "__main__":
         # Read class list from Excel
         class_list = excel_text_io.read_class_lists(sys.argv[1])
         # Get deck of cards for seating chart
-        deck = seat_options(len(class_list))
+        deck = generate_deck(len(class_list))
         # Assign a random card to each student
         seat_assignments = assign_seats(class_list, deck)
         # Write assignments
