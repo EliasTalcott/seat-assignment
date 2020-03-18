@@ -9,7 +9,7 @@ import random
 import excel_text_io
 
 ###
-## Number of students per table dictionary and algorithm
+## Generate a deck based on number of students
 ###
 seats = {9: (0, 0, 3, 3, 0, 3, 0), 10: (0, 0, 4, 3, 0, 3, 0), 11: (0, 0, 4, 4, 0, 3, 0),
          12: (3, 0, 3, 3, 0, 3, 0), 13: (4, 0, 3, 3, 0, 3, 0), 14: (4, 0, 4, 3, 0, 3, 0),
@@ -19,20 +19,14 @@ seats = {9: (0, 0, 3, 3, 0, 3, 0), 10: (0, 0, 4, 3, 0, 3, 0), 11: (0, 0, 4, 4, 0
          24: (4, 4, 4, 3, 3, 3, 3), 25: (4, 4, 4, 4, 3, 3, 3), 26: (4, 3, 4, 4, 3, 4, 4),
          27: (4, 4, 4, 3, 4, 4, 4), 28: (4, 4, 4, 4, 4, 4, 4)}
 
+suits = ["clubs", "hearts", "spades", "diamonds"]
 
 def generate_deck(num_students):
     tables = seats[num_students]
     cards = []
     for i, table in enumerate(tables):
-        if table == 3:
-            cards.append((str(i + 1)) + " of clubs")
-            cards.append((str(i + 1)) + " of hearts")
-            cards.append((str(i + 1)) + " of spades")
-        elif table == 4:
-            cards.append((str(i + 1)) + " of clubs")
-            cards.append((str(i + 1)) + " of hearts")
-            cards.append((str(i + 1)) + " of spades")
-            cards.append((str(i + 1)) + " of diamonds")
+        for j in range(table):
+            cards.append((str(i + 1)) + " of " + suits[j])
     return cards
 
 
