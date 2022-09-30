@@ -20,13 +20,10 @@ class Roster:
 
     def assign_seats(self) -> None:
         """Assign each student a seat"""
-        self.assignments = {key: [""] * self.max_roster_len for key in self.rosters.keys()}
         for period, students in self.rosters.items():
             real_students = list(filter(str, students))
-            seats = list(range(0, len(real_students)))
-            for student in real_students:
-                rand = random.randint(0, len(seats) - 1)
-                self.assignments[period][seats.pop(rand)] = student
+            self.assignments[period] = random.sample(real_students, len(real_students))
+            self.assignments[period] += [""] * (self.max_roster_len - len(real_students))
 
     def write_assignments(self) -> None:
         """Write seat assignments to CSV"""
@@ -34,7 +31,7 @@ class Roster:
             writer = csv.writer(file, lineterminator="\n")
             writer.writerow(self.assignments.keys())
             for i in range(self.max_roster_len):
-                writer.writerow([self.assignments[key][i] for key in self.assignments.keys()])
+                writer.writerow([self.assignments[key][i] for key in self.assignments])
 
 
 def main() -> None:
