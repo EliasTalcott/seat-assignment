@@ -1,3 +1,7 @@
 # PyCharm stuff
 /.idea/
 /__pycache__/
+
+# Data files
+*.csv
+*.txt
